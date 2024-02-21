@@ -11,19 +11,18 @@ function App() {
         iconSize: [38, 38]
     });
 
-    // Pour afficher un markers pour un paquet de markers prochent
-    const createClusterCustomIcon = function (cluster) {
-        return new divIcon({
-            html: `<span class="cluster-icon">${cluster.getChildCount()}</span>`,
-            className: "custom-marker-cluster",
-            iconSize: point(33,33,true)
-        });
-    };
-
     // Les markers
     const markers = [
         {
             geocode: [16.1920, -61.6],
+            popUp: "Hello popUp"
+        },
+        {
+            geocode: [16.1920, -61],
+            popUp: "Hello popUp"
+        },
+        {
+            geocode: [16.1, -61.6],
             popUp: "Hello popUp"
         }
     ];
@@ -40,7 +39,7 @@ function App() {
                   url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                   />
 
-                  {/* Mapping through the markers */}
+                  {/* Les markers sur la map */}
                   {markers.map((marker) => (
                       <Marker position={marker.geocode} icon={customIcon}>
                           <Popup>{marker.popUp}</Popup>
